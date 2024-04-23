@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCC", "AntSeg\TCC.csproj", "{939052E9-ED9C-48B7-A1B8-E9362E0B7B02}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntSeg", "AntSeg\AntSeg.csproj", "{939052E9-ED9C-48B7-A1B8-E9362E0B7B02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comparador", "Comparer\Comparador.csproj", "{BD183853-70B1-4005-9C7D-437E702FB9A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comparer", "Comparer\Comparer.csproj", "{BD183853-70B1-4005-9C7D-437E702FB9A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {22E0EEC4-3807-4A8C-9026-5C5EEA250A23}
 	EndGlobalSection
 EndGlobal

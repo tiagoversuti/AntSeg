@@ -4,11 +4,11 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace Comparador
+namespace Comparer
 {
-    public partial class Comparador : Form
+    public partial class Comparer : Form
     {
-        public Comparador()
+        public Comparer()
         {
             InitializeComponent();
         }

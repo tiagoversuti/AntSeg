@@ -49,11 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Comparador.cs">
+    <Compile Include="Comparer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Comparador.Designer.cs">
-      <DependentUpon>Comparador.cs</DependentUpon>
+    <Compile Include="Comparer.Designer.cs">
+      <DependentUpon>Comparer.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,8 +67,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Comparador.resx">
-      <DependentUpon>Comparador.cs</DependentUpon>
+    <EmbeddedResource Include="Comparer.resx">
+      <DependentUpon>Comparer.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">

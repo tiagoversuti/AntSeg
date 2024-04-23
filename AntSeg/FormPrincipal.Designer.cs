@@ -1,4 +1,4 @@
-﻿namespace TCC
+﻿namespace AntSeg
 {
     partial class FormPrincipal
     {

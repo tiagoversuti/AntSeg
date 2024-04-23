@@ -15,7 +15,7 @@ namespace Testador
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Comparador.Comparador());
+            Application.Run(new Comparer.Comparer());
         }
     }
 }

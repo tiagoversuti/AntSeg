@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TCC.Properties {
+namespace AntSeg.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

@@ -1,6 +1,6 @@
-﻿namespace Comparador
+﻿namespace Comparer
 {
-    partial class Comparador
+    partial class Comparer
     {
         /// <summary>
         /// Required designer variable.
@@ -179,7 +179,7 @@
             this.limparBtn.UseVisualStyleBackColor = true;
             this.limparBtn.Click += new System.EventHandler(this.limparBtn_Click);
             // 
-            // Comparador
+            // Comparer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -199,9 +199,9 @@
             this.Controls.Add(this.file2Btn);
             this.Controls.Add(this.file1Lbl);
             this.Controls.Add(this.file1Btn);
-            this.Name = "Comparador";
+            this.Name = "Comparer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Comparador de Imagens";
+            this.Text = "Images Comparer";
             this.ResumeLayout(false);
             this.PerformLayout();
 

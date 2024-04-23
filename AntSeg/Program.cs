@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using System.Drawing;
 
 
-namespace TCC
+namespace AntSeg
 {
     static class Program
     {

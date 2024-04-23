@@ -1,6 +1,6 @@
 ﻿namespace AntSeg
 {
-    partial class FormPrincipal
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.

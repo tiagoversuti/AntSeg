@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace AntSeg
 {
-    public partial class FormPrincipal : Form
+    public partial class MainForm : Form
     {
         private Bitmap imagem, imagemGradiente, imagemPB, imagemOriginal;
         private byte[,] matrizGradiente;
@@ -26,7 +26,7 @@ namespace AntSeg
         DateTime t_fim;
         TimeSpan t_diferenca;
 
-        public FormPrincipal()
+        public MainForm()
         {
             InitializeComponent();
         }

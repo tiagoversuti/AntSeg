@@ -1,0 +1,79 @@
+AntSeg(P1, P2, imagem)
+{
+	melhorSol = pior solução possível // solução com valor -1
+	InicializaFeromônios
+	para cada iteração
+	{
+		sol = ConstruirSolCFormigas
+		AtualizarFeromonios
+		se (sol melhor que melhorSol)
+			melhorSol = sol
+	}
+	retorne melhorSol
+}
+
+InicializaFeromonios([,] feromonios)
+{
+	todas as posições recebem valor 1
+}
+
+InicializaPassos
+{
+	todas as posições recebem valor falso
+}
+
+AtualizarFeromonios(feromonios, sol)
+{
+	todas as posições são multiplicadas por 0.7  // evapora
+	todas as posições em sol são somadas em q	 // deposita
+}
+
+ConstruirSolsCFormigas(P1, P2, imagem)
+{
+	melhorSol = pior solução possível
+	para cada formiga
+	{
+		InicializaPassos
+		solAtual = ConstruirSol
+		se (solAtual melhor que melhorSol)
+			melhorSol = solAtual
+	}
+	retorne melhorSol
+}
+
+ConstruirSol(imagem, P1, P2)
+{
+	P = P1
+	adiciona P em sol
+	enquanto (P != P2)
+	{
+		pontos = DefineProximosPontos
+		se (não há pontos candidatos a próximo) //formiga ficou presa
+		{
+			P = P1
+			InicializaPassos
+			reinicializa sol
+			adiciona P em sol
+			continue
+		}
+		P = DecideProximoPonto(pontos)
+		adiciona P em sol
+		marca P como já caminhado
+	}
+}
+	retorne sol
+
+DefineProximosPontos(imagem, P)
+{
+	verifica se P.X, P.Y-1 é candidato a próximo ponto e o adiciona a pontos se for
+	verifica se P.X, P.Y+1 é candidato a próximo ponto e o adiciona a pontos se for
+	verifica se P.X-1, P.Y é candidato a próximo ponto e o adiciona a pontos se for
+	verifica se P.X+1, P.Y é candidato a próximo ponto e o adiciona a pontos se for
+	retorne pontos
+}
+
+DecideProximoPonto(imagem, pontos)
+{
+	P = sorteia entre os candidatos a próximo ponto
+	retorne P
+}

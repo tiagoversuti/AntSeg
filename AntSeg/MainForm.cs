@@ -83,7 +83,7 @@ namespace AntSeg
                 pretoEBrancoToolStripMenuItem.Enabled = true;
                 gradienteToolStripMenuItem.Enabled = true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw new ApplicationException("Falha ao carregar imagem");
             }
@@ -97,61 +97,56 @@ namespace AntSeg
         
         private void panel1_MouseClick(object sender, MouseEventArgs e)
         {
+            salvarToolStripMenuItem.Enabled = false;
+
+            if (e.Button == MouseButtons.Left)
             {
-                salvarToolStripMenuItem.Enabled = false;
-
-                if (e.Button == MouseButtons.Left)
+                if (primeiroClique)
                 {
+                    t_inicioseg = DateTime.Now;
+                    apagarBtn_Click(sender, e);
+                    primeiroClique = false;
+                    var ndi = (int)(numeroDeIteracoesNud.Value);
+                    var qdf = (int)(qtdeDeFormigasNud.Value);
+                    var alfa = (double)alfaNud.Value;
+                    var beta = (double)betaNud.Value;
+                    var gama = (int)(gamaNud.Value);
+                    var ev = (double)evaporacaoNud.Value;
+                    var p = (int)pNud.Value;
+                    var prob = probabilidadeCbx.Checked;
+                    antseg = new Ant(imagem, ndi, qdf, matrizGradiente, alfa, beta, gama, ev, p, prob);
+                    panel3.BackgroundImage = PintaFeromonios(antseg);
+
+                    resultado = new List<Point>();
+                }
+                pontos.Add(new Point(mouse.X, mouse.Y));
+                if (pontos.Count > 1)
+                    ExecutaAntSeg();
+            }
+
+            else if (e.Button == MouseButtons.Right)
+            {
+                if (resultado.Count > 1 && pontos.Count > 1)
+                {
+                    while (resultado[resultado.Count - 1] != pontos[pontos.Count - 2])
+                    {
+                        resultado.RemoveAt(resultado.Count - 1);
+                    }
+                    pontos.RemoveAt(pontos.Count - 1);
+                    PintaCaminhoInteiro();
+                    if (decrementarCbx.Checked)
+                        antseg.EvaporarFeromonios(ref antseg.feromonios);
+                    PintaFeromonios(antseg);
+                    AtualizaPen();
                     if (primeiroClique)
-                    {
-                        t_inicioseg = DateTime.Now;
-                        apagarBtn_Click(sender, e);
                         primeiroClique = false;
-                        var ndi = (int)(numeroDeIteracoesNud.Value);
-                        var qdf = (int)(qtdeDeFormigasNud.Value);
-                        var alfa = (double)alfaNud.Value;
-                        var beta = (double)betaNud.Value;
-                        var gama = (int)(gamaNud.Value);
-                        var ev = (double)evaporacaoNud.Value;
-                        var p = (int)pNud.Value;
-                        var prob = probabilidadeCbx.Checked;
-                        antseg = new Ant(imagem, ndi, qdf, matrizGradiente, alfa, beta, gama, ev, p, prob);
-                        panel3.BackgroundImage = PintaFeromonios(antseg);
-
-                        resultado = new List<Point>();
-                    }
-                    pontos.Add(new Point(mouse.X, mouse.Y));
-                    if (pontos.Count > 1)
-                        ExecutaAntSeg();
                 }
-
-                else if (e.Button == MouseButtons.Right)
-                {
-                    if (resultado.Count > 1 && pontos.Count > 1)
-                    {
-                        while (resultado[resultado.Count - 1] != pontos[pontos.Count - 2])
-                        {
-                            resultado.RemoveAt(resultado.Count - 1);
-                        }
-                        pontos.RemoveAt(pontos.Count - 1);
-                        PintaCaminhoInteiro();
-                        if (decrementarCbx.Checked)
-                            antseg.EvaporarFeromonios(ref antseg.feromonios);
-                        PintaFeromonios(antseg);
-                        AtualizaPen();
-                        if (primeiroClique)
-                            primeiroClique = false;
-                    }
-                }
-                else if (e.Button == MouseButtons.Middle)
-                {
-                    if (resultado.Count > 1)
-                    {
-                        pontos.Add(new Point(e.X, e.Y));
-                        if (pontos.Count > 1)
-                            ExecutaAntSeg();
-                    }
-                }
+            }
+            else if (e.Button == MouseButtons.Middle && resultado.Count > 1)
+            {
+                pontos.Add(new Point(e.X, e.Y));
+                if (pontos.Count > 1)
+                    ExecutaAntSeg();
             }
         }
 
@@ -290,7 +285,6 @@ namespace AntSeg
                     panel4.BackgroundImage = imagemPreta;
                 }
             }
-            return;
         }
 
         private Bitmap PintaFeromonios(Ant ant)

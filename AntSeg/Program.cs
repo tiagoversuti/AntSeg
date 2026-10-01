@@ -113,13 +113,13 @@ namespace AntSeg
                 matriz[x, 0] = 0;
                 matriz[x,imagemG.Height - 1] = 0;
             }
-            for (int x = 0; x < imagemG.Height; x++)
+            for (int y = 0; y < imagemG.Height; y++)
             {
                 Color co = Color.FromArgb(0, 0, 0);
-                imagemG.SetPixel(0, x, co);
-                imagemG.SetPixel(imagemG.Width - 1, 0, co);
-                matriz[0, x] = 0;
-                matriz[imagemG.Height - 1, x] = 0;
+                imagemG.SetPixel(0, y, co);
+                imagemG.SetPixel(imagemG.Width - 1, y, co);
+                matriz[0, y] = 0;
+                matriz[imagemG.Width - 1, y] = 0;
             }
 
             return imagemG;
